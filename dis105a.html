@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+	<title>Math 105A Discussion</title>
+</head>
+<body>
+	<script>
+		// original website
+		var original = "https://www.math.uci.edu/~aaronc8/Su2017Math105A.html";
+		// get content from original website
+		xhr = new XMLHttpRequest();
+		xhr.open("GET", original, true);
+		// if successful, display the improved version
+		xhr.onload = function() {
+			// replace a bunch of tags and styles and get rid of redundant whitespaces
+			document.body.parentElement.innerHTML = this.responseText
+			.replace(/(<br\s*\/*>\s*){2,}/g, "<br>")
+			.replace(/\s\s+/g, " ")
+			.replace(/<b>/g, "<h3>")
+			.replace(/<\/b>\s*(<br>)*/g, "</h3>")
+			.replace(/<\/*font.*?>/g, "");
+			document.body.style.backgroundColor = "#def";
+		};
+		// if unsuccessful, redirect user to original website
+		xhr.onerror = function() {
+			// put message in the middle of the webpage
+			document.head.appendChild(document.createElement("style")).innerHTML = "\
+				span {\
+					position: absolute;\
+					top: 50%;\
+					left: 50%;\
+					transform: translate(-50%, -50%);\
+					text-align: center;\
+					vertical-align: middle;\
+				}\
+			";
+			// add the redirection element
+			var redirect = document.head.appendChild(document.createElement("meta"));
+			redirect.httpEquiv = "refresh";
+			redirect.content = "3;url=" + original;
+			// display the message
+			document.body.innerHTML = "\
+				<span>\
+					Sorry, something went wrong.\
+					<br>\
+					You should be redirected to the original webpage soon.\
+					<br>\
+					<a href=\"" + original + "\">Click here if it's taking too long.</a>\
+				</span>\
+			";
+		};
+		xhr.send();
+	</script>
+</body>
