@@ -20,6 +20,9 @@ document.body.parentElement.innerHTML = document.body.parentElement.innerHTML\n\
 .replace(/<\\/b>\\s*(<br>)*/g, "</h3>")\n\
 .replace(/<\\/*font.*?>/g, "");\n\
 document.body.style.backgroundColor = "#def";\n\
+var ico = document.head.appendChild(document.createElement("link"));\n\
+ico.rel="icon";\n\
+ico.href="./favicon.ico";\n\
 </script>'
         except:
             # redirect upon failure
