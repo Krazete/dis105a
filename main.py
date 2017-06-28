@@ -13,6 +13,7 @@ class Index(webapp2.RequestHandler):
             # replace a bunch of tags and styles and get rid of redundant whitespaces
             content += '<script>\n\
 document.body.parentElement.innerHTML = document.body.parentElement.innerHTML\n\
+.replace(/<\\/p>/g, "")\n\
 .replace(/(<br\\s*\\/*>\\s*){2,}/g, "<br>")\n\
 .replace(/\\s\\s+/g, " ")\n\
 .replace(/<b>/g, "<h3>")\n\
