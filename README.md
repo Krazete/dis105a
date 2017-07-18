@@ -3,4 +3,3 @@ A dynamically improved version of the [Math 105A (Summer 2017) Discussion websit
 
 It takes content directly from the original website and simply appends some JavaScript to alter the webpage.  
 That includes removing extra whitespace, changing all \<b\> tags to \<h3\>, replacing color schemes, etc.  
-To handle local files, it just redirects to the original source file.
